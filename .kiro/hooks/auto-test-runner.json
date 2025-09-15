@@ -1,0 +1,22 @@
+{
+  "name": "Auto Test Runner",
+  "description": "Automatically run tests when code files are saved",
+  "trigger": {
+    "type": "file_save",
+    "pattern": "**/*.{ts,tsx,js,jsx}"
+  },
+  "actions": [
+    {
+      "type": "command",
+      "command": "npm test -- --watchAll=false --passWithNoTests",
+      "description": "Run test suite"
+    },
+    {
+      "type": "notification",
+      "message": "Tests completed for {{file_name}}",
+      "condition": "success"
+    }
+  ],
+  "enabled": true,
+  "auto_approve": false
+}

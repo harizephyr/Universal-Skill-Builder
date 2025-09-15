@@ -1,0 +1,22 @@
+{
+  "name": "API Performance Monitor",
+  "description": "Monitor and optimize API route performance when API files are modified",
+  "trigger": {
+    "type": "file_save",
+    "pattern": "app/api/**/*.ts"
+  },
+  "actions": [
+    {
+      "type": "ai_analysis",
+      "prompt": "Analyze this API route for:\n1. Performance optimization opportunities\n2. Error handling completeness\n3. Security best practices\n4. OpenAI API usage efficiency\n\nSuggest specific improvements for production readiness.",
+      "model": "gpt-3.5-turbo"
+    },
+    {
+      "type": "command",
+      "command": "npm run build",
+      "description": "Test build process"
+    }
+  ],
+  "enabled": true,
+  "auto_approve": true
+}

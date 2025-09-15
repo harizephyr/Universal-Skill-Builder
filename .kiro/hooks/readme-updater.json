@@ -1,0 +1,23 @@
+{
+  "name": "Documentation Updater",
+  "description": "Automatically update README when new features are added",
+  "trigger": {
+    "type": "manual",
+    "button_text": "Update Documentation"
+  },
+  "actions": [
+    {
+      "type": "ai_analysis",
+      "prompt": "Analyze the current codebase and update the README.md to reflect:\n1. New features or components added\n2. Updated installation instructions\n3. Current project structure\n4. Any new dependencies or requirements\n\nKeep the existing style and format, but ensure accuracy.",
+      "model": "gpt-3.5-turbo",
+      "include_files": ["README.md", "package.json", "app/**/*.tsx"]
+    },
+    {
+      "type": "file_update",
+      "target": "README.md",
+      "description": "Update project documentation"
+    }
+  ],
+  "enabled": true,
+  "auto_approve": false
+}

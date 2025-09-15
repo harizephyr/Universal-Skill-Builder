@@ -1,0 +1,22 @@
+{
+  "name": "Educational Content Validator",
+  "description": "Validate educational content for accessibility and quality when learning components are modified",
+  "trigger": {
+    "type": "file_save",
+    "pattern": "app/components/{SkillTranslator,LearningModes,WorkflowGenerator,SpecBuilder}.tsx"
+  },
+  "actions": [
+    {
+      "type": "ai_analysis",
+      "prompt": "Review this educational component for:\n1. Accessibility compliance (WCAG 2.1 AA)\n2. Cultural sensitivity\n3. Learning effectiveness\n4. User experience quality\n\nProvide specific recommendations for improvement.",
+      "model": "gpt-3.5-turbo"
+    },
+    {
+      "type": "command",
+      "command": "npm run lint",
+      "description": "Check code quality"
+    }
+  ],
+  "enabled": true,
+  "auto_approve": false
+}
